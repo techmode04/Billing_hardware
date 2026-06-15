@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
@@ -101,11 +100,12 @@
                 <!-- Brand Header -->
                 <div class="p-5 border-b border-slate-800 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <div class="bg-indigo-600 p-2 rounded-lg text-white">
-                            <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+                        <div id="side-logo-container" class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center overflow-hidden text-white flex-shrink-0">
+                            <img id="side-logo-img" src="" class="hidden w-full h-full object-contain">
+                            <i id="side-logo-fallback" class="fa-solid fa-screwdriver-wrench text-xl"></i>
                         </div>
                         <div>
-                            <h1 class="font-bold text-white tracking-wide text-sm">DHISLE HARDWARE</h1>
+                            <h1 id="side-shop-name" class="font-bold text-white tracking-wide text-xs">DHISLE HARDWARE</h1>
                             <p class="text-[10px] text-indigo-400">And Traders (GST ERP)</p>
                         </div>
                     </div>
@@ -207,10 +207,16 @@
                         <i class="fa-solid fa-barcode text-lg"></i>
                     </button>
 
-                    <!-- Profile Header Info -->
-                    <div class="text-right hidden sm:block">
-                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Dhisle Hardware & Traders</p>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400">Maharashtra, India</p>
+                    <!-- Profile Header Info with Brand Logo -->
+                    <div class="flex items-center space-x-2">
+                        <div class="text-right hidden sm:block">
+                            <p id="hdr-shop-name" class="text-xs font-bold text-slate-700 dark:text-slate-300">Dhisle Hardware & Traders</p>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400">Maharashtra, India</p>
+                        </div>
+                        <div id="hdr-logo-container" class="w-9 h-9 rounded-lg bg-indigo-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700 flex-shrink-0">
+                            <img id="hdr-logo-img" src="" class="hidden w-full h-full object-contain">
+                            <i id="hdr-logo-fallback" class="fa-solid fa-screwdriver-wrench text-indigo-600 dark:text-indigo-400 text-sm"></i>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -657,10 +663,29 @@
 
                 <!-- 6. REPORTS & GST LEDGER VIEW -->
                 <div id="view-reports" class="hidden space-y-6">
+                    <!-- Dynamic Reports Ledger Logo Header Card -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex items-center space-x-4">
+                            <div id="rep-logo-container" class="w-14 h-14 bg-indigo-50 dark:bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-650 flex-shrink-0">
+                                <img id="rep-logo-img" src="" class="hidden w-full h-full object-contain">
+                                <i id="rep-logo-fallback" class="fa-solid fa-file-contract text-2xl text-indigo-600 dark:text-indigo-400"></i>
+                            </div>
+                            <div>
+                                <h2 id="rep-shop-name" class="text-sm font-extrabold text-slate-800 dark:text-white uppercase tracking-tight">Dhisle Hardware and Traders</h2>
+                                <p id="rep-shop-gstin" class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400">GSTIN: 27AAEFD5849M1Z9</p>
+                                <p class="text-[10px] text-slate-400">Official Sales, Profit & GST Ledger Statement</p>
+                            </div>
+                        </div>
+                        <div class="text-right text-[11px] text-slate-500 hidden md:block">
+                            <p class="font-semibold text-slate-700 dark:text-slate-300">Statement Period Ledger</p>
+                            <p id="rep-date-range" class="text-indigo-600 dark:text-indigo-400 font-bold">Timeline: This Calendar Month</p>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                         <div class="md:col-span-2">
-                            <h2 class="text-sm font-bold text-slate-700 dark:text-white uppercase tracking-wider mb-2">Store Sales, Tax & Profit Ledger</h2>
-                            <p class="text-xs text-slate-400">Generate and extract operational spreadsheets</p>
+                            <h2 class="text-xs font-bold text-slate-700 dark:text-white uppercase tracking-wider mb-2">Configure Ledger Filter</h2>
+                            <p class="text-xs text-slate-400">Choose custom timeframe and instantly extract excel data Sheets.</p>
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold text-slate-400 uppercase">Select Timeline</label>
@@ -746,7 +771,7 @@
                                     </div>
                                     <div class="flex-1 text-center sm:text-left space-y-1.5">
                                         <h4 class="font-bold text-slate-750 dark:text-white">Shop Business Logo</h4>
-                                        <p class="text-[10px] text-slate-400 leading-normal">Apna customized business logo upload karein. Ye automatic compress ho kar invoices me print hoga.</p>
+                                        <p class="text-[10px] text-slate-400 leading-normal">Apna customized business logo upload karein. Ye automatic compress ho kar invoices aur ledger me print hoga.</p>
                                         <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
                                             <button onclick="document.getElementById('set-shop-logo-file').click()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-[10px] px-3 py-1.5 rounded transition">Upload Logo</button>
                                             <button onclick="removeShopLogo()" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-rose-500 font-semibold text-[10px] px-3 py-1.5 rounded transition">Remove</button>
@@ -801,13 +826,13 @@
                                 </div>
                             </div>
                             <p class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
-                                Google Apps Script Web App Deployment ke jariye mobile aur desktop browser me realtime sync enabled karein. 
+                                Google Apps Script Web App Deployment ke jariye mobile aur desktop browser me realtime sync enabled karein. Ye continuous sync backgound update loop handle karega.
                             </p>
                             <div class="space-y-3.5 text-xs">
                                 <div class="flex items-center justify-between p-3 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900 rounded-lg">
                                     <div>
                                         <p class="font-bold text-slate-750 dark:text-white">Cloud Auto-Sync</p>
-                                        <p class="text-[10px] text-slate-400">Har save aur click ke baad database save karein.</p>
+                                        <p class="text-[10px] text-slate-400">Har save aur click ke baad database automatic save & sync karein.</p>
                                     </div>
                                     <button onclick="toggleCloudSyncFlag()" id="btn-cloud-sync-toggle" class="w-12 h-6 bg-slate-300 dark:bg-slate-600 rounded-full flex items-center p-1 transition-colors duration-300">
                                         <div class="w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300" id="cloud-sync-toggle-circle"></div>
@@ -868,7 +893,7 @@ function doGet(e) {
                                     <i class="fa-solid fa-download text-lg text-indigo-500"></i>
                                     <span>Download Database (JSON)</span>
                                 </button>
-                                <label class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-650 flex flex-col items-center justify-center space-y-1 cursor-pointer">
+                                <label class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-650 flex flex-col items-center justify-center space-y-1 cursor-pointer">
                                     <i class="fa-solid fa-upload text-lg text-emerald-500"></i>
                                     <span>Restore Database (JSON)</span>
                                     <input type="file" id="import-json-file" class="hidden" onchange="importJSONBackup(event)">
@@ -1469,6 +1494,9 @@ function doGet(e) {
                     persistDB();
                 }
 
+                // Global logo references render call
+                renderGlobalLogos();
+
                 // Auto pull from Google Cloud if synced URL is active on start
                 if (db.settings.cloudSyncUrl && db.settings.cloudSyncEnabled) {
                     pullFromCloud(false);
@@ -1543,9 +1571,11 @@ function doGet(e) {
                     updateCloudIndicator("synced", "Synced");
                     if (manual) {
                         showToast("Latest database dynamic sync completed successfully!", "success");
-                        // Refresh rendering of active sheets
-                        renderDashboard();
                     }
+                    
+                    // Automatically refresh current screen/tables UI on sync download
+                    renderGlobalLogos();
+                    refreshCurrentView();
                 } else {
                     updateCloudIndicator("error", "Empty Data");
                     if (manual) showToast("Cloud script par koi database nahi mila.", "warning");
@@ -1555,6 +1585,13 @@ function doGet(e) {
                 if (manual) showToast("Cloud pull failure. CORS permission check karein.", "danger");
             }
         }
+
+        // Background automatic pool cycle for seamless real-time syncing
+        setInterval(() => {
+            if (db.settings.cloudSyncUrl && db.settings.cloudSyncEnabled) {
+                pullFromCloud(false);
+            }
+        }, 20000); // Polls and pulls every 20 seconds
 
         function updateCloudIndicator(status, text) {
             const dot = document.getElementById("cloud-status-dot");
@@ -1602,6 +1639,57 @@ function doGet(e) {
             showToast("Cloud Auto-Sync preference saved!", "success");
         }
 
+        // GLOBAL LOGO INJECTION CONTROLLER
+        function renderGlobalLogos() {
+            const logo = db.settings.logo;
+            const shopName = db.settings.shopName;
+            const gstin = db.settings.gstin;
+
+            // 1. Sidebar Brand logo
+            const sideImg = document.getElementById("side-logo-img");
+            const sideFallback = document.getElementById("side-logo-fallback");
+            const sideName = document.getElementById("side-shop-name");
+            if (logo) {
+                sideImg.src = logo;
+                sideImg.classList.remove("hidden");
+                sideFallback.classList.add("hidden");
+            } else {
+                sideImg.classList.add("hidden");
+                sideFallback.classList.remove("hidden");
+            }
+            if (sideName) sideName.innerText = shopName.toUpperCase();
+
+            // 2. Top Header profile logo
+            const hdrImg = document.getElementById("hdr-logo-img");
+            const hdrFallback = document.getElementById("hdr-logo-fallback");
+            const hdrName = document.getElementById("hdr-shop-name");
+            if (logo) {
+                hdrImg.src = logo;
+                hdrImg.classList.remove("hidden");
+                hdrFallback.classList.add("hidden");
+            } else {
+                hdrImg.classList.add("hidden");
+                hdrFallback.classList.remove("hidden");
+            }
+            if (hdrName) hdrName.innerText = shopName;
+
+            // 3. Reports / Ledger Logo Section
+            const repImg = document.getElementById("rep-logo-img");
+            const repFallback = document.getElementById("rep-logo-fallback");
+            const repName = document.getElementById("rep-shop-name");
+            const repGstin = document.getElementById("rep-shop-gstin");
+            if (logo) {
+                repImg.src = logo;
+                repImg.classList.remove("hidden");
+                repFallback.classList.add("hidden");
+            } else {
+                repImg.classList.add("hidden");
+                repFallback.classList.remove("hidden");
+            }
+            if (repName) repName.innerText = shopName.toUpperCase();
+            if (repGstin) repGstin.innerText = `GSTIN: ${gstin}`;
+        }
+
         // CUSTOM LOGO UPLOAD & PROCESSING
         function handleLogoUpload(event) {
             const file = event.target.files[0];
@@ -1638,8 +1726,9 @@ function doGet(e) {
                     db.settings.logo = compressedBase64;
                     persistDB();
 
-                    // Update UI Preview
+                    // Update UI Previews
                     renderLogoInSettings();
+                    renderGlobalLogos();
                     showToast("Shop logo successfully uploaded & optimized!", "success");
                 };
                 img.src = e.target.result;
@@ -1651,6 +1740,7 @@ function doGet(e) {
             db.settings.logo = "";
             persistDB();
             renderLogoInSettings();
+            renderGlobalLogos();
             showToast("Business Logo removed successfully.", "success");
         }
 
@@ -1665,6 +1755,28 @@ function doGet(e) {
                 imgPreview.classList.add("hidden");
                 placeholder.classList.remove("hidden");
             }
+        }
+
+        // Dynamic Active View refresher
+        function refreshCurrentView() {
+            const views = ["dashboard", "billing", "inventory", "customers", "suppliers", "reports", "settings"];
+            let activeView = "dashboard";
+            for (const v of views) {
+                const el = document.getElementById(`view-${v}`);
+                if (el && !el.classList.contains("hidden")) {
+                    activeView = v;
+                    break;
+                }
+            }
+            
+            // Refresh data structures
+            renderDashboard();
+            if (activeView === "inventory") loadInventoryTable();
+            else if (activeView === "customers") loadCustomerTable();
+            else if (activeView === "suppliers") loadSupplierTable();
+            else if (activeView === "reports") runSalesReports();
+            else if (activeView === "settings") loadSettingsView();
+            else if (activeView === "billing") renderBillItemsTable();
         }
 
         // Global Navigation/Routing Framework
@@ -1682,6 +1794,12 @@ function doGet(e) {
 
             const activeNav = document.getElementById(`nav-${viewId}`);
             if (activeNav) activeNav.classList.add("bg-indigo-600", "text-white");
+
+            // MOBILE SIDEBAR AUTO-CLOSE MECHANISM
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar && !sidebar.classList.contains("-translate-x-full")) {
+                sidebar.classList.add("-translate-x-full");
+            }
 
             if (viewId === "dashboard") {
                 renderDashboard();
@@ -2293,7 +2411,7 @@ function doGet(e) {
             if (!s) return;
             activeViewerInvoice = s;
 
-            // ================== RENDER LOGOS IN PRINT PREVIEW ==================
+            // RENDER LOGOS IN PRINT PREVIEWS
             const prLogo = document.getElementById("pr-shop-logo");
             const thLogo = document.getElementById("th-shop-logo");
             const prLogoContainer = document.getElementById("pr-shop-logo-container");
@@ -2309,7 +2427,7 @@ function doGet(e) {
                 thLogoContainer.classList.add("hidden");
             }
 
-            // ================== RENDER TEMPLATE 1: A4 Standard ==================
+            // RENDER TEMPLATE 1: A4 Standard
             document.getElementById("pr-shop-name").innerText = db.settings.shopName.toUpperCase();
             document.getElementById("pr-shop-address").innerText = db.settings.address;
             document.getElementById("pr-shop-gstin").innerText = db.settings.gstin;
@@ -2393,7 +2511,7 @@ function doGet(e) {
             document.getElementById("pr-calc-words").innerText = convertNumberToWords(s.total);
 
 
-            // ================== RENDER TEMPLATE 2: Thermal Slip ==================
+            // RENDER TEMPLATE 2: Thermal Slip
             document.getElementById("th-shop-name").innerText = db.settings.shopName.toUpperCase();
             document.getElementById("th-shop-address").innerText = db.settings.address.substring(0, 40) + "...";
             document.getElementById("th-shop-gstin").innerText = db.settings.gstin;
@@ -2606,6 +2724,7 @@ function doGet(e) {
             document.getElementById("confirm-modal").classList.remove("hidden");
         }
 
+        // Close Action Matrix Modal
         function closeConfirmModal(confirmed) {
             document.getElementById("confirm-modal").classList.add("hidden");
             if (confirmed && confirmCallback) {
@@ -2733,6 +2852,23 @@ function doGet(e) {
                 loadCustomerTable();
                 showToast("Customer record deleted.", "success");
             });
+        }
+
+        function openCollectPaymentModal(id) {
+            const c = db.customers.find(cust => cust.id === id);
+            if (!c) return;
+
+            document.getElementById("col-cust-id").value = c.id;
+            document.getElementById("col-cust-name").innerText = c.name;
+            document.getElementById("col-cust-outstanding").innerText = `₹${c.udhar.toFixed(2)}`;
+            document.getElementById("col-amount").value = "";
+            document.getElementById("col-notes").value = "";
+
+            document.getElementById("collect-payment-modal").classList.remove("hidden");
+        }
+
+        function closeCollectPaymentModal() {
+            document.getElementById("collect-payment-modal").classList.add("hidden");
         }
 
         function processUdharCollection(event) {
@@ -2864,6 +3000,12 @@ function doGet(e) {
                 filteredInvoices = db.sales.filter(s => s.date.startsWith(curMonth));
             }
 
+            // Sync dynamic timeline indicator text
+            const timelineTxt = document.getElementById("rep-date-range");
+            if (timelineTxt) {
+                timelineTxt.innerText = `Timeline: ${timeVal === "today" ? "Today" : timeVal === "weekly" ? "This Week" : timeVal === "monthly" ? "This Month" : "All Historical database"}`;
+            }
+
             let periodSalesVal = 0;
             let periodCGSTVal = 0;
             let periodSGSTVal = 0;
@@ -2939,6 +3081,7 @@ function doGet(e) {
             db.settings.cloudSyncUrl = newUrl;
 
             persistDB();
+            renderGlobalLogos();
             showToast("Store corporate settings updated successfully!", "success");
             
             if (newUrl) {
@@ -3009,6 +3152,7 @@ function doGet(e) {
                         persistDB();
                         showToast("System database restored successfully!", "success");
                         renderDashboard();
+                        renderGlobalLogos();
                     } else {
                         showToast("Invalid JSON Database structure.", "danger");
                     }
@@ -3025,6 +3169,7 @@ function doGet(e) {
                 initializeDatabase();
                 showToast("System database reset completed.", "success");
                 renderDashboard();
+                renderGlobalLogos();
             });
         }
 
