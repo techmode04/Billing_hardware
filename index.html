@@ -141,7 +141,7 @@
             </button>
 
             <!-- Help Legend Footer -->
-            <div class="text-center pt-2 border-t border-slate-100 dark:border-slate-750">
+            <div class="text-center pt-2 border-t border-slate-100 dark:border-slate-755">
                 <p class="text-[10px] text-slate-400 leading-normal">
                     Default Credentials: <span class="font-bold text-slate-600 dark:text-slate-300">Admin Pin: 1234</span> | <span class="font-bold text-slate-600 dark:text-slate-300">Staff Pin: 5678</span>
                 </p>
@@ -405,6 +405,15 @@
 
                 <!-- 2. BILLING VIEW (POS ENGINE) -->
                 <div id="view-billing" class="hidden space-y-6">
+                    <!-- Edit Mode Banner -->
+                    <div id="billing-edit-banner" class="hidden bg-amber-500/10 border border-amber-500/25 p-4 rounded-xl text-amber-700 dark:text-amber-400 text-xs flex justify-between items-center">
+                        <div class="flex items-center space-x-2 font-bold">
+                            <i class="fa-solid fa-triangle-exclamation text-base animate-pulse text-amber-500"></i>
+                            <span>Modifying Existing Invoice: <span id="billing-edit-invoice-id" class="underline">DH-1000</span> (Is bill me badalaw ho rahe hain)</span>
+                        </div>
+                        <button onclick="cancelEditingInvoice()" class="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-1.5 rounded-lg font-bold transition">Cancel Edit</button>
+                    </div>
+
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                         
                         <!-- Left Panel: Product Picker & Bill Items -->
@@ -536,19 +545,19 @@
                                 <div class="pt-3 border-t border-slate-100 dark:border-slate-700 space-y-2.5">
                                     <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">Method of Payment</label>
                                     <div class="grid grid-cols-2 gap-2">
-                                        <button onclick="selectPaymentMode('cash')" id="btn-pay-cash" class="pay-mode-btn active p-2 border border-slate-200 dark:border-slate-600 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                        <button onclick="selectPaymentMode('cash')" id="btn-pay-cash" class="pay-mode-btn active p-2 border border-slate-200 dark:border-slate-650 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                                             <i class="fa-solid fa-wallet text-emerald-500"></i>
                                             <span>Cash</span>
                                         </button>
-                                        <button onclick="selectPaymentMode('upi')" id="btn-pay-upi" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-600 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                        <button onclick="selectPaymentMode('upi')" id="btn-pay-upi" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-655 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                                             <i class="fa-solid fa-mobile-screen text-indigo-500"></i>
                                             <span>UPI / QR</span>
                                         </button>
-                                        <button onclick="selectPaymentMode('card')" id="btn-pay-card" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-600 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                        <button onclick="selectPaymentMode('card')" id="btn-pay-card" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-650 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                                             <i class="fa-solid fa-credit-card text-blue-500"></i>
                                             <span>Card Pay</span>
                                         </button>
-                                        <button onclick="selectPaymentMode('credit')" id="btn-pay-credit" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-600 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition" title="Save into Credit ledger">
+                                        <button onclick="selectPaymentMode('credit')" id="btn-pay-credit" class="pay-mode-btn p-2 border border-slate-200 dark:border-slate-650 rounded-lg flex items-center justify-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition" title="Save into Credit ledger">
                                             <i class="fa-solid fa-handshake-angle text-amber-500"></i>
                                             <span>Udhar Book</span>
                                         </button>
@@ -727,7 +736,7 @@
                                 <i id="rep-logo-fallback" class="fa-solid fa-file-contract text-2xl text-indigo-600 dark:text-indigo-400"></i>
                             </div>
                             <div>
-                                <h2 id="rep-shop-name" class="text-sm font-extrabold text-slate-800 dark:text-white uppercase tracking-tight">Dhisle Hardware and Traders</h2>
+                                <h2 id="rep-shop-name" class="text-sm font-extrabold text-slate-805 dark:text-white uppercase tracking-tight">Dhisle Hardware and Traders</h2>
                                 <p id="rep-shop-gstin" class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400">GSTIN: 27AAEFD5849M1Z9</p>
                                 <p class="text-[10px] text-slate-400">Official Sales, Profit & GST Ledger Statement</p>
                             </div>
@@ -1246,7 +1255,7 @@
     <div id="product-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-2xl w-full p-6 space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2">
-                <h3 id="product-modal-title" class="font-extrabold text-slate-800 dark:text-white text-sm uppercase tracking-wide">Add Product Particulars</h3>
+                <h3 id="product-modal-title" class="font-extrabold text-slate-805 dark:text-white text-sm uppercase tracking-wide">Add Product Particulars</h3>
                 <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <form id="product-form" onsubmit="saveProduct(event)" class="space-y-4 text-xs">
@@ -1254,18 +1263,18 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Product Name *</label>
-                        <input type="text" id="prod-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="text" id="prod-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Hardware Category *</label>
                         <div class="flex items-center space-x-1">
-                            <select id="prod-category" required class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                            <select id="prod-category" required class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                                 <!-- Dynamic options loaded on render -->
                             </select>
                             <button type="button" onclick="openAddCategoryModal()" class="w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-600 rounded-lg shadow-sm" title="Add Nayi Category">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
-                            <button type="button" onclick="deleteActiveCategory()" class="w-10 h-10 flex items-center justify-center bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-500 border border-slate-200 dark:border-slate-600 rounded-lg shadow-sm" title="Delete Category">
+                            <button type="button" onclick="deleteActiveCategory()" class="w-10 h-10 flex items-center justify-center bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-505 border border-slate-200 dark:border-slate-600 rounded-lg shadow-sm" title="Delete Category">
                                 <i class="fa-solid fa-minus"></i>
                             </button>
                         </div>
@@ -1274,15 +1283,15 @@
                 <div class="grid grid-cols-3 gap-3">
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Brand Name</label>
-                        <input type="text" id="prod-brand" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="text" id="prod-brand" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">HSN Code</label>
-                        <input type="text" id="prod-hsn" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="text" id="prod-hsn" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">GST Rate (%)</label>
-                        <select id="prod-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <select id="prod-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                             <option value="18">18% (Standard hardware)</option>
                             <option value="28">28% (Luxury items/Paints)</option>
                             <option value="12">12% (Fittings/Tools)</option>
@@ -1294,20 +1303,20 @@
                 <div class="grid grid-cols-4 gap-3">
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Purchase Rate (Excl. GST)</label>
-                        <input type="number" step="0.01" id="prod-purchase" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="number" step="0.01" id="prod-purchase" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Selling Price (Incl. GST)</label>
-                        <input type="number" step="0.01" id="prod-selling" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="number" step="0.01" id="prod-selling" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Initial Stock Qty</label>
-                        <input type="number" step="0.001" id="prod-stock" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="number" step="0.001" id="prod-stock" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Stock Unit</label>
                         <div class="flex items-center space-x-1">
-                            <select id="prod-unit" class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                            <select id="prod-unit" class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                                 <!-- Dynamic options loaded on render -->
                             </select>
                             <button type="button" onclick="openAddUnitModal()" class="w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-600 rounded-lg shadow-sm" title="Add Naya Unit">
@@ -1322,11 +1331,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Barcode Code / SKU ID</label>
-                        <input type="text" id="prod-barcode" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="text" id="prod-barcode" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Low Stock Alert Threshold</label>
-                        <input type="number" id="prod-threshold" value="5" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                        <input type="number" id="prod-threshold" value="5" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none focus:border-indigo-500">
                     </div>
                 </div>
                 <div class="flex justify-end space-x-2 pt-4">
@@ -1348,19 +1357,19 @@
                 <input type="hidden" id="cust-edit-id">
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Customer Name *</label>
-                    <input type="text" id="cust-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="cust-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Contact Phone *</label>
-                    <input type="text" id="cust-phone" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="cust-phone" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Client GSTIN</label>
-                    <input type="text" id="cust-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="cust-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Detailed Business Address</label>
-                    <textarea id="cust-address" rows="2" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none"></textarea>
+                    <textarea id="cust-address" rows="2" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none"></textarea>
                 </div>
                 <div class="flex justify-end space-x-2 pt-2">
                     <button type="button" onclick="closeCustomerModal()" class="bg-slate-100 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-white px-4 py-2 rounded-lg font-bold">Cancel</button>
@@ -1374,22 +1383,22 @@
     <div id="supplier-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2">
-                <h3 id="supplier-modal-title" class="font-bold text-slate-800 dark:text-white text-xs uppercase tracking-wider">Add Supplier Details</h3>
+                <h3 id="supplier-modal-title" class="font-bold text-slate-855 dark:text-white text-xs uppercase tracking-wider">Add Supplier Details</h3>
                 <button onclick="closeSupplierModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <form id="supplier-form" onsubmit="saveSupplier(event)" class="space-y-4 text-xs">
                 <input type="hidden" id="supp-edit-id">
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Supplier Name *</label>
-                    <input type="text" id="supp-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="supp-name" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Contact Phone *</label>
-                    <input type="text" id="supp-phone" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="supp-phone" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">GSTIN</label>
-                    <input type="text" id="supp-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="supp-gst" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div class="flex justify-end space-x-2 pt-2">
                     <button type="button" onclick="closeSupplierModal()" class="bg-slate-100 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-white px-4 py-2 rounded-lg font-bold">Cancel</button>
@@ -1403,22 +1412,22 @@
     <div id="collect-payment-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2">
-                <h3 class="font-bold text-slate-800 dark:text-white text-xs uppercase tracking-wider">Collect Udhar Balance</h3>
+                <h3 class="font-bold text-slate-805 dark:text-white text-xs uppercase tracking-wider">Collect Udhar Balance</h3>
                 <button onclick="closeCollectPaymentModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="bg-amber-50 dark:bg-amber-950/40 p-3.5 rounded-lg border border-amber-100 dark:border-amber-950 text-xs">
-                <p class="font-bold text-slate-700 dark:text-amber-400">Customer: <span id="col-cust-name">Client</span></p>
+                <p class="font-bold text-slate-705 dark:text-amber-400">Customer: <span id="col-cust-name">Client</span></p>
                 <p class="text-slate-650 dark:text-slate-400">Total Outstanding Udhar Due: <span class="font-extrabold text-amber-600" id="col-cust-outstanding">₹0.00</span></p>
             </div>
             <form onsubmit="processUdharCollection(event)" class="space-y-4 text-xs">
                 <input type="hidden" id="col-cust-id">
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Enter Amount Received (₹) *</label>
-                    <input type="number" step="0.01" id="col-amount" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="number" step="0.01" id="col-amount" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-500 mb-1">Payment Method / Reference Note</label>
-                    <input type="text" id="col-notes" placeholder="e.g. Received via GPay / Cash handoff" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none">
+                    <input type="text" id="col-notes" placeholder="e.g. Received via GPay / Cash handoff" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-855 dark:text-white rounded-lg outline-none">
                 </div>
                 <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-lg transition shadow-md">
                     Apply Credit Update
@@ -1451,7 +1460,7 @@
                 <button onclick="closeAddUnitModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3">
-                <input type="text" id="new-unit-input" placeholder="Unit Name (e.g. Set, Carton)" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 rounded-lg bg-transparent text-sm text-slate-800 dark:text-white outline-none focus:border-indigo-500">
+                <input type="text" id="new-unit-input" placeholder="Unit Name (e.g. Set, Carton)" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 rounded-lg bg-transparent text-sm text-slate-805 dark:text-white outline-none focus:border-indigo-500">
                 <button onclick="saveNewUnit()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2.5 rounded-lg transition shadow-md">
                     Unit Save Karein
                 </button>
@@ -1465,7 +1474,7 @@
             <div class="w-12 h-12 bg-rose-50 dark:bg-rose-950/40 text-rose-500 rounded-full flex items-center justify-center mx-auto">
                 <i class="fa-solid fa-triangle-exclamation text-xl"></i>
             </div>
-            <h3 class="font-extrabold text-slate-800 dark:text-white text-sm uppercase tracking-wide">Are you sure?</h3>
+            <h3 class="font-extrabold text-slate-805 dark:text-white text-sm uppercase tracking-wide">Are you sure?</h3>
             <p class="text-xs text-slate-500 dark:text-slate-400" id="confirm-modal-message">Do you really want to execute this action?</p>
             <div class="flex space-x-2 pt-2">
                 <button onclick="closeConfirmModal(false)" class="w-1/2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white font-semibold text-xs py-2 rounded-lg transition">
@@ -1512,6 +1521,7 @@
         // UI Role state management
         let currentSelectedLoginRole = 'admin'; // 'admin' or 'staff'
         let currentAuthenticatedRole = null; // 'admin' or 'staff'
+        let editingInvoiceNo = null; // Stores invoice ID when editing an existing bill
 
         // Utility function to convert numbers into professional word formats for Indian GST Invoices
         function convertNumberToWords(amount) {
@@ -2343,11 +2353,12 @@
                         <td class="py-3 font-bold">${s.id}</td>
                         <td class="py-3">${s.customerName}</td>
                         <td class="py-3">${s.date}</td>
-                        <td class="py-3 font-semibold text-slate-950 dark:text-white">₹${s.total.toFixed(2)}</td>
+                        <td class="py-3 font-semibold text-slate-955 dark:text-white">₹${s.total.toFixed(2)}</td>
                         <td class="py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${s.paymentMode === 'cash' ? 'bg-emerald-100 text-emerald-800' : s.paymentMode === 'upi' ? 'bg-indigo-100 text-indigo-800' : 'bg-amber-100 text-amber-800'}">${s.paymentMode}</span></td>
                         <td class="py-3 text-right space-x-2">
-                            <button onclick="viewInvoiceDetails('${s.id}')" class="text-indigo-600 dark:text-indigo-400 hover:underline"><i class="fa-solid fa-eye"></i> View</button>
-                            <button onclick="deleteInvoice('${s.id}')" class="text-rose-500 hover:underline btn-admin-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button onclick="viewInvoiceDetails('${s.id}')" class="text-indigo-600 dark:text-indigo-400 hover:underline" title="View Bill"><i class="fa-solid fa-eye"></i> View</button>
+                            <button onclick="editInvoice('${s.id}')" class="text-amber-500 hover:underline" title="Modify/Add more items"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                            <button onclick="deleteInvoice('${s.id}')" class="text-rose-500 hover:underline btn-admin-delete" title="Delete Bill"><i class="fa-solid fa-trash"></i> Delete</button>
                         </td>
                     `;
                     recentBody.appendChild(tr);
@@ -2465,7 +2476,7 @@
                         <td class="p-3.5 text-center">
                             <div class="flex items-center justify-center space-x-1">
                                 <button onclick="updateBillQty(${index}, -1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white rounded flex items-center justify-center font-bold text-sm" title="Decrease qty">-</button>
-                                <input type="number" step="0.001" value="${item.qty}" onchange="manualUpdateBillQty(${index}, this.value)" class="w-16 p-1 border border-slate-200 dark:border-slate-650 bg-transparent rounded text-xs text-center font-bold text-slate-850 dark:text-white outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800">
+                                <input type="number" step="0.001" value="${item.qty}" onchange="manualUpdateBillQty(${index}, this.value)" class="w-16 p-1 border border-slate-200 dark:border-slate-650 bg-transparent rounded text-xs text-center font-bold text-slate-855 dark:text-white outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800">
                                 <span class="text-[10px] text-slate-500 dark:text-slate-400 font-bold min-w-[28px] text-left ml-1">${item.unit}</span>
                                 <button onclick="updateBillQty(${index}, 1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-655 text-slate-700 dark:text-white rounded flex items-center justify-center font-bold text-sm" title="Increase qty">+</button>
                             </div>
@@ -2473,7 +2484,7 @@
                         <td class="p-3.5">
                             <input type="number" step="0.01" value="${item.rate}" onchange="updateBillRate(${index}, this.value)" class="w-20 p-1 border border-slate-200 dark:border-slate-650 bg-transparent rounded text-xs text-center font-bold">
                         </td>
-                        <td class="p-3.5 font-bold text-slate-850 dark:text-white">₹${(item.qty * item.rate).toFixed(2)}</td>
+                        <td class="p-3.5 font-bold text-slate-855 dark:text-white">₹${(item.qty * item.rate).toFixed(2)}</td>
                         <td class="p-3.5 text-right">
                             <button onclick="removeBillItem(${index})" class="text-rose-500 hover:text-rose-600 p-1"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
@@ -2498,7 +2509,7 @@
             if (val <= p.stock) {
                 item.qty = parseFloat(val.toFixed(3));
             } else {
-                showToast(`Available stock limit (₹${p.stock} ${p.unit}) exceeded! Setting to max stock available.`, "warning");
+                showToast(`Available stock limit (${p.stock} ${p.unit}) exceeded! Setting to max stock available.`, "warning");
                 item.qty = parseFloat(p.stock.toFixed(3));
             }
             renderBillItemsTable();
@@ -2671,6 +2682,87 @@
             });
         }
 
+        // DYNAMIC INVOICE EDITING CONTROL
+        function editInvoice(id) {
+            const s = db.sales.find(item => item.id === id);
+            if (!s) return;
+
+            // If an edit session is already active, prevent starting a new one without resolution
+            if (editingInvoiceNo) {
+                showToast("Pahle chal rahe edit session ko save ya cancel karein!", "warning");
+                return;
+            }
+
+            editingInvoiceNo = id;
+
+            // 1. Temporarily revert stocks for accurate stock ceiling in POS during edit
+            s.items.forEach(item => {
+                const p = db.products.find(prod => prod.id === item.id);
+                if (p) {
+                    p.stock = parseFloat((p.stock + item.qty).toFixed(3));
+                }
+            });
+
+            // 2. Populate active basket deep copying items
+            activeBillItems = JSON.parse(JSON.stringify(s.items));
+
+            // 3. Link customer details
+            if (s.customerId && s.customerId !== "3") {
+                const c = db.customers.find(cust => cust.id === s.customerId);
+                if (c) {
+                    linkCustomerToBill(c);
+                }
+            } else {
+                unlinkCustomer();
+            }
+
+            // 4. Fill discount fields
+            const discInput = document.getElementById("bill-discount-input");
+            const discType = document.getElementById("bill-discount-type");
+            if (discInput && discType) {
+                discInput.value = s.discount;
+                discType.value = "flat";
+            }
+
+            // 5. Select payment channel
+            selectPaymentMode(s.paymentMode);
+
+            // 6. Reveal POS Edit alert banner
+            const banner = document.getElementById("billing-edit-banner");
+            const bannerId = document.getElementById("billing-edit-invoice-id");
+            if (banner && bannerId) {
+                banner.classList.remove("hidden");
+                bannerId.innerText = id;
+            }
+
+            // Route view to Billing POS screen
+            switchView("billing");
+            renderBillItemsTable();
+            showToast(`Invoice ${id} details loaded into billing terminal for editing!`, "success");
+        }
+
+        function cancelEditingInvoice() {
+            if (!editingInvoiceNo) return;
+
+            // Re-deduct original quantities to keep database integral
+            const s = db.sales.find(item => item.id === editingInvoiceNo);
+            if (s) {
+                s.items.forEach(item => {
+                    const p = db.products.find(prod => prod.id === item.id);
+                    if (p) {
+                        p.stock = Math.max(0, parseFloat((p.stock - item.qty).toFixed(3)));
+                    }
+                });
+            }
+
+            editingInvoiceNo = null;
+            const banner = document.getElementById("billing-edit-banner");
+            if (banner) banner.classList.add("hidden");
+
+            resetInvoicePOS();
+            showToast("Invoice editing cancelled. Original invoice unchanged.", "warning");
+        }
+
         // Checkout logic inside Billing POS
         function checkoutInvoice() {
             if (activeBillItems.length === 0) {
@@ -2691,13 +2783,24 @@
 
             const customerName = billSelectedCustomer ? billSelectedCustomer.name : "Walk-In Customer";
             const customerId = billSelectedCustomer ? billSelectedCustomer.id : "3";
-            const newInvoiceNo = "DH-" + (1000 + db.sales.length + 1);
+            const targetInvoiceNo = editingInvoiceNo || ("DH-" + (1000 + db.sales.length + 1));
 
-            const newInvoice = {
-                id: newInvoiceNo,
+            // If editing, first we revert old Udhar balances
+            if (editingInvoiceNo) {
+                const oldInvoice = db.sales.find(s => s.id === editingInvoiceNo);
+                if (oldInvoice && oldInvoice.paymentMode === "credit" && oldInvoice.customerId) {
+                    const c = db.customers.find(cust => cust.id === oldInvoice.customerId);
+                    if (c) {
+                        c.udhar = Math.max(0, parseFloat((c.udhar - oldInvoice.total).toFixed(2)));
+                    }
+                }
+            }
+
+            const updatedInvoice = {
+                id: targetInvoiceNo,
                 customerId: customerId,
                 customerName: customerName,
-                date: new Date().toISOString().split('T')[0],
+                date: editingInvoiceNo ? (db.sales.find(s => s.id === editingInvoiceNo)?.date || new Date().toISOString().split('T')[0]) : new Date().toISOString().split('T')[0],
                 items: [...activeBillItems],
                 taxable: totalTaxable,
                 cgst: totalCGST,
@@ -2707,11 +2810,11 @@
                 paymentMode: billPaymentMode
             };
 
-            // Deduct store stocks
+            // Deduct new items from stock (stock reversion was already done when entering edit mode)
             activeBillItems.forEach(item => {
                 const p = db.products.find(prod => prod.id === item.id);
                 if (p) {
-                    p.stock = Math.max(0, p.stock - item.qty);
+                    p.stock = Math.max(0, parseFloat((p.stock - item.qty).toFixed(3)));
                 }
             });
 
@@ -2719,16 +2822,28 @@
             if (billPaymentMode === "credit" && billSelectedCustomer) {
                 const c = db.customers.find(cust => cust.id === billSelectedCustomer.id);
                 if (c) {
-                    c.udhar += grandTotalVal;
+                    c.udhar = parseFloat((c.udhar + grandTotalVal).toFixed(2));
                 }
             }
 
-            db.sales.push(newInvoice);
+            if (editingInvoiceNo) {
+                const index = db.sales.findIndex(s => s.id === editingInvoiceNo);
+                if (index !== -1) {
+                    db.sales[index] = updatedInvoice;
+                }
+                editingInvoiceNo = null;
+                const banner = document.getElementById("billing-edit-banner");
+                if (banner) banner.classList.add("hidden");
+                showToast(`Invoice ${targetInvoiceNo} successfully updated!`, "success");
+            } else {
+                db.sales.push(updatedInvoice);
+                showToast(`Invoice ${targetInvoiceNo} settled & stored successfully!`, "success");
+            }
+
             persistDB();
-            showToast(`Invoice ${newInvoiceNo} settled & stored successfully!`, "success");
 
             // Open Invoice Modal directly for preview
-            viewInvoiceDetails(newInvoiceNo);
+            viewInvoiceDetails(targetInvoiceNo);
             resetInvoicePOS();
         }
 
@@ -2750,15 +2865,15 @@
                 invoice.items.forEach(item => {
                     const p = db.products.find(prod => prod.id === item.id);
                     if (p) {
-                        p.stock += item.qty; // Add qty back to inventory
+                        p.stock = parseFloat((p.stock + item.qty).toFixed(3)); // Add qty back to inventory
                     }
                 });
 
-                // 2. Agar Udhar Book transaction tha to customer ka balance kam karein
+                // 2. Agar Udhar Book transaction था to customer ka balance kam karein
                 if (invoice.paymentMode === "credit" && invoice.customerId) {
                     const c = db.customers.find(cust => cust.id === invoice.customerId);
                     if (c) {
-                        c.udhar = Math.max(0, c.udhar - invoice.total);
+                        c.udhar = Math.max(0, parseFloat((c.udhar - invoice.total).toFixed(2)));
                     }
                 }
 
@@ -2772,6 +2887,22 @@
         }
 
         function resetInvoicePOS() {
+            if (editingInvoiceNo) {
+                // If they reset manually while in edit mode, treat it as a cancel to restore database state
+                const s = db.sales.find(item => item.id === editingInvoiceNo);
+                if (s) {
+                    s.items.forEach(item => {
+                        const p = db.products.find(prod => prod.id === item.id);
+                        if (p) {
+                            p.stock = Math.max(0, parseFloat((p.stock - item.qty).toFixed(3)));
+                        }
+                    });
+                }
+                editingInvoiceNo = null;
+                const banner = document.getElementById("billing-edit-banner");
+                if (banner) banner.classList.add("hidden");
+            }
+
             activeBillItems = [];
             billSelectedCustomer = null;
             billPaymentMode = "cash";
@@ -3030,8 +3161,8 @@
                     <td class="p-4 text-center font-bold ${p.stock <= p.threshold ? 'text-rose-500' : 'text-emerald-500'}">${p.stock}</td>
                     <td class="p-4 text-center text-slate-500">${p.unit}</td>
                     <td class="p-4 text-right space-x-2 border-admin-only">
-                        <button onclick="editProduct('${p.id}')" class="text-indigo-600 hover:underline"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteProduct('${p.id}')" class="text-rose-500 hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        <button onclick="editProduct('${p.id}')" class="text-indigo-600 hover:underline" title="Edit Product"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteProduct('${p.id}')" class="text-rose-500 hover:underline" title="Delete Product"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 `;
                 body.appendChild(tr);
@@ -3184,8 +3315,8 @@
                     <td class="p-4 font-bold ${c.udhar > 0 ? 'text-amber-600' : 'text-slate-400'}">₹${c.udhar.toFixed(2)}</td>
                     <td class="p-4 text-right space-x-2">
                         ${c.udhar > 0 ? `<button onclick="openCollectPaymentModal('${c.id}')" class="bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/45 text-indigo-600 dark:text-indigo-400 font-bold px-2 py-1 rounded" title="Collect Credit Payment"><i class="fa-solid fa-hand-holding-dollar"></i> Collect</button>` : ''}
-                        <button onclick="editCustomer('${c.id}')" class="text-indigo-600 hover:underline border-admin-only"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteCustomer('${c.id}')" class="text-rose-500 hover:underline border-admin-only"><i class="fa-solid fa-trash-can"></i></button>
+                        <button onclick="editCustomer('${c.id}')" class="text-indigo-600 hover:underline border-admin-only" title="Edit Customer Details"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteCustomer('${c.id}')" class="text-rose-500 hover:underline border-admin-only" title="Delete Customer File"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 `;
                 body.appendChild(tr);
@@ -3301,7 +3432,7 @@
                     showToast(`Collected amount cannot exceed pending due of ₹${c.udhar}`, "warning");
                     return;
                 }
-                c.udhar = Math.max(0, c.udhar - amount);
+                c.udhar = parseFloat((c.udhar - amount).toFixed(2));
                 persistDB();
                 showToast(`Payment of ₹${amount} received. Remaining Udhar: ₹${c.udhar.toFixed(2)}`, "success");
                 
@@ -3328,8 +3459,8 @@
                     <td class="p-4 text-slate-500">${s.gstin || '-'}</td>
                     <td class="p-4 font-bold text-slate-700">₹${s.outstanding.toFixed(2)}</td>
                     <td class="p-4 text-right space-x-2 border-admin-only">
-                        <button onclick="editSupplier('${s.id}')" class="text-indigo-600 hover:underline"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteSupplier('${s.id}')" class="text-rose-500 hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        <button onclick="editSupplier('${s.id}')" class="text-indigo-600 hover:underline" title="Edit Supplier"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteSupplier('${s.id}')" class="text-rose-500 hover:underline" title="Delete Supplier"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 `;
                 body.appendChild(tr);
@@ -3458,6 +3589,7 @@
                     <td class="p-4 text-slate-400">${s.date}</td>
                     <td class="p-4 text-right space-x-2">
                         <button onclick="viewInvoiceDetails('${s.id}')" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-white px-2 py-1 rounded">View</button>
+                        <button onclick="editInvoice('${s.id}')" class="bg-amber-100 hover:bg-amber-200 dark:bg-amber-955 text-amber-600 dark:text-amber-400 px-2 py-1 rounded">Edit</button>
                         <button onclick="deleteInvoice('${s.id}')" class="bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 px-2 py-1 rounded">Delete</button>
                     </td>
                 `;
